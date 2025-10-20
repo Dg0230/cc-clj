@@ -9,6 +9,7 @@ export declare class CommanderError extends Error {
     readonly exitCode: number;
     constructor(code: string, exitCode: number, message: string);
 }
-export declare class InvalidArgumentError extends CommanderError {
+export declare class InvalidArgumentError extends Error {
     constructor(message: string);
 }
+export declare function todo(message?: string): never;

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvalidArgumentError = exports.CommanderError = void 0;
+exports.todo = todo;
 /**
  * Minimal Commander error implementations staged from bundle module `aC1`.
  *
@@ -17,10 +18,13 @@ class CommanderError extends Error {
     }
 }
 exports.CommanderError = CommanderError;
-class InvalidArgumentError extends CommanderError {
+class InvalidArgumentError extends Error {
     constructor(message) {
-        super('commander.invalidArgument', 1, message);
+        super(message);
         this.name = 'InvalidArgumentError';
     }
 }
 exports.InvalidArgumentError = InvalidArgumentError;
+function todo(message = 'TODO: Commander error behaviour not yet implemented.') {
+    throw new CommanderError('commander.todo', 1, message);
+}

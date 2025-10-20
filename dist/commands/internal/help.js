@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Help = void 0;
-const argument_1 = require("./argument");
 /**
  * Placeholder for the Commander help formatter (bundle module `xs0`).
  */
@@ -28,7 +27,7 @@ class Help {
         if (args.length) {
             lines.push('', 'Arguments:');
             for (const arg of args) {
-                lines.push(`  ${(0, argument_1.humanReadableArgName)(arg)}`);
+                lines.push(`  ${arg.name()}`);
             }
         }
         return lines.join('\n').trim();

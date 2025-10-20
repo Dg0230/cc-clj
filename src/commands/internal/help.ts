@@ -1,5 +1,4 @@
 import type { Argument } from './argument';
-import { humanReadableArgName } from './argument';
 import type { Command } from './command';
 import type { Option } from './option';
 
@@ -32,7 +31,7 @@ export class Help {
     if (args.length) {
       lines.push('', 'Arguments:');
       for (const arg of args) {
-        lines.push(`  ${humanReadableArgName(arg)}`);
+        lines.push(`  ${arg.name()}`);
       }
     }
 

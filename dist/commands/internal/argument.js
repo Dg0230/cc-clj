@@ -4,42 +4,13 @@ exports.Argument = void 0;
 exports.argument = argument;
 exports.humanReadableArgName = humanReadableArgName;
 const errors_1 = require("../../shared/cli/errors");
-function normalizeName(name) {
-    const trimmed = name.trim();
-    const required = trimmed.startsWith('<');
-    const optional = trimmed.startsWith('[');
-    const inner = trimmed.replace(/^[[<]/, '').replace(/[>\]]$/, '');
-    const variadic = inner.endsWith('...');
-    const baseName = variadic ? inner.slice(0, -3) : inner;
-    return {
-        baseName: baseName || trimmed,
-        variadic,
-        required: required || (!required && !optional),
-    };
-}
 class Argument {
-    constructor(name, description) {
-        this._rawName = name;
-        const normalized = normalizeName(name);
-        this._name = normalized.baseName;
-        this._required = normalized.required;
-        this._variadic = normalized.variadic;
+    constructor(_name, description) {
+        this._name = _name;
         this._description = description;
     }
     name() {
         return this._name;
-    }
-    rawName() {
-        return this._rawName;
-    }
-    isRequired() {
-        return this._required && !this._variadicOptionalFallback;
-    }
-    isOptional() {
-        return !this.isRequired();
-    }
-    isVariadic() {
-        return this._variadic;
     }
     description(description) {
         var _a;
@@ -74,16 +45,16 @@ class Argument {
         }
         return this._defaultValue;
     }
-    get _variadicOptionalFallback() {
-        return this._variadic && !this._required;
-    }
 }
 exports.Argument = Argument;
 function argument(name, description) {
     return new Argument(name, description);
 }
 function humanReadableArgName(arg) {
-    const suffix = arg.isVariadic() ? '...' : '';
-    const name = `${arg.name()}${suffix}`;
-    return arg.isRequired() ? `<${name}>` : `[${name}]`;
+    const name = arg.name();
+    if (name.startsWith('<') || name.startsWith('[')) {
+        return name;
+    }
+    const hasDefault = arg.defaultValue !== undefined;
+    return hasDefault ? `[${name}]` : `<${name}>`;
 }

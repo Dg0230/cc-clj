@@ -1,4 +1,4 @@
-import { Argument, humanReadableArgName } from './argument';
+import { Argument } from './argument';
 import { CommanderError, InvalidArgumentError } from '../../shared/cli/errors';
 import { Help } from './help';
 import { parseTokens, ParseOptionsResult } from './parser';
@@ -188,21 +188,21 @@ export class Command {
   private async executeParse(argv: readonly string[], settings: ParseOptionsSettings): Promise<void> {
     const tokens = this.prepareTokens(argv, settings.from);
     const result = this.applyOptions(tokens);
-    this._passedOptionValues = this.applyOptionDefaults(result);
-    this._processedOperands = this.processArguments(result.operands);
+    this._passedOptionValues = result.optionValues;
+    this._processedOperands = result.operands;
+
+    if (this.arguments.length > result.operands.length) {
+      const missing = this.arguments.slice(result.operands.length);
+      const missingNames = missing.map((arg) => arg.name()).join(', ');
+      throw new InvalidArgumentError(`Missing required arguments: ${missingNames}`);
+    }
 
     if (!this._allowUnknown && result.unknown.length > 0) {
       throw new CommanderError('commander.unknownOption', 1, `Unknown options: ${result.unknown.join(', ')}`);
     }
 
-    if (this._storeOptionsAsProperties) {
-      for (const [key, value] of Object.entries(this._passedOptionValues)) {
-        (this as Record<string, unknown>)[key] = value;
-      }
-    }
-
     if (this._action) {
-      const maybePromise = this._action(this, ...this._processedOperands);
+      const maybePromise = this._action(this, ...result.operands);
       if (maybePromise instanceof Promise) {
         await maybePromise;
       }
@@ -221,74 +221,6 @@ export class Command {
 
   private applyOptions(tokens: string[]): ParseOptionsResult {
     return parseTokens(tokens, this.options, this._allowUnknown || this._enablePositionalOptions);
-  }
-
-  private applyOptionDefaults(result: ParseOptionsResult): Record<string, unknown> {
-    const values: Record<string, unknown> = { ...result.optionValues };
-
-    for (const option of this.options) {
-      const attribute = option.attributeName();
-      const existing = values[attribute];
-      if (existing === undefined) {
-        const defaultValue = option.defaultValue;
-        if (defaultValue !== undefined) {
-          values[attribute] = defaultValue;
-        } else if (option.isMandatory()) {
-          throw new CommanderError(
-            'commander.missingMandatoryOptionValue',
-            1,
-            `Required option not specified: ${option.flags}`,
-          );
-        }
-      }
-    }
-
-    return values;
-  }
-
-  private processArguments(operands: readonly string[]): unknown[] {
-    const remaining = [...operands];
-    const processed: unknown[] = [];
-    const missing: string[] = [];
-
-    for (const argument of this.arguments) {
-      if (argument.isVariadic()) {
-        const values = remaining.splice(0);
-        if (values.length === 0) {
-          if (argument.isRequired()) {
-            missing.push(humanReadableArgName(argument));
-          } else if (argument.defaultValue !== undefined) {
-            processed.push(argument.defaultValue);
-          } else {
-            processed.push([]);
-          }
-        } else {
-          const parsedValues = values.map((value) => argument.parse(value));
-          processed.push(parsedValues);
-        }
-        continue;
-      }
-
-      const value = remaining.shift();
-      if (value === undefined) {
-        if (argument.isRequired()) {
-          missing.push(humanReadableArgName(argument));
-        } else if (argument.defaultValue !== undefined) {
-          processed.push(argument.defaultValue);
-        } else {
-          processed.push(undefined);
-        }
-        continue;
-      }
-
-      processed.push(argument.parse(value));
-    }
-
-    if (missing.length > 0) {
-      throw new InvalidArgumentError(`Missing required arguments: ${missing.join(', ')}`);
-    }
-
-    return [...processed, ...remaining];
   }
 
   private get _allowUnknown(): boolean {

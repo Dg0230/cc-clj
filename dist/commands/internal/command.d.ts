@@ -53,8 +53,6 @@ export declare class Command {
     private executeParse;
     private prepareTokens;
     private applyOptions;
-    private applyOptionDefaults;
-    private processArguments;
     private get _allowUnknown();
     private set _allowUnknown(value);
     private _allowUnknownOption;

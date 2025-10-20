@@ -148,18 +148,18 @@ class Command {
     async executeParse(argv, settings) {
         const tokens = this.prepareTokens(argv, settings.from);
         const result = this.applyOptions(tokens);
-        this._passedOptionValues = this.applyOptionDefaults(result);
-        this._processedOperands = this.processArguments(result.operands);
+        this._passedOptionValues = result.optionValues;
+        this._processedOperands = result.operands;
+        if (this.arguments.length > result.operands.length) {
+            const missing = this.arguments.slice(result.operands.length);
+            const missingNames = missing.map((arg) => arg.name()).join(', ');
+            throw new errors_1.InvalidArgumentError(`Missing required arguments: ${missingNames}`);
+        }
         if (!this._allowUnknown && result.unknown.length > 0) {
             throw new errors_1.CommanderError('commander.unknownOption', 1, `Unknown options: ${result.unknown.join(', ')}`);
         }
-        if (this._storeOptionsAsProperties) {
-            for (const [key, value] of Object.entries(this._passedOptionValues)) {
-                this[key] = value;
-            }
-        }
         if (this._action) {
-            const maybePromise = this._action(this, ...this._processedOperands);
+            const maybePromise = this._action(this, ...result.operands);
             if (maybePromise instanceof Promise) {
                 await maybePromise;
             }
@@ -176,67 +176,6 @@ class Command {
     }
     applyOptions(tokens) {
         return (0, parser_1.parseTokens)(tokens, this.options, this._allowUnknown || this._enablePositionalOptions);
-    }
-    applyOptionDefaults(result) {
-        const values = { ...result.optionValues };
-        for (const option of this.options) {
-            const attribute = option.attributeName();
-            const existing = values[attribute];
-            if (existing === undefined) {
-                const defaultValue = option.defaultValue;
-                if (defaultValue !== undefined) {
-                    values[attribute] = defaultValue;
-                }
-                else if (option.isMandatory()) {
-                    throw new errors_1.CommanderError('commander.missingMandatoryOptionValue', 1, `Required option not specified: ${option.flags}`);
-                }
-            }
-        }
-        return values;
-    }
-    processArguments(operands) {
-        const remaining = [...operands];
-        const processed = [];
-        const missing = [];
-        for (const argument of this.arguments) {
-            if (argument.isVariadic()) {
-                const values = remaining.splice(0);
-                if (values.length === 0) {
-                    if (argument.isRequired()) {
-                        missing.push((0, argument_1.humanReadableArgName)(argument));
-                    }
-                    else if (argument.defaultValue !== undefined) {
-                        processed.push(argument.defaultValue);
-                    }
-                    else {
-                        processed.push([]);
-                    }
-                }
-                else {
-                    const parsedValues = values.map((value) => argument.parse(value));
-                    processed.push(parsedValues);
-                }
-                continue;
-            }
-            const value = remaining.shift();
-            if (value === undefined) {
-                if (argument.isRequired()) {
-                    missing.push((0, argument_1.humanReadableArgName)(argument));
-                }
-                else if (argument.defaultValue !== undefined) {
-                    processed.push(argument.defaultValue);
-                }
-                else {
-                    processed.push(undefined);
-                }
-                continue;
-            }
-            processed.push(argument.parse(value));
-        }
-        if (missing.length > 0) {
-            throw new errors_1.InvalidArgumentError(`Missing required arguments: ${missing.join(', ')}`);
-        }
-        return [...processed, ...remaining];
     }
     get _allowUnknown() {
         return this._allowUnknownOption;
