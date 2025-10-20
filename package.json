@@ -1,0 +1,12 @@
+{
+  "name": "cc-clj-analysis",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "analyze": "node analyze-modules.js"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0"
+  }
+}
