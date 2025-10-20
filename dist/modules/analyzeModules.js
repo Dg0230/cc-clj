@@ -63,15 +63,11 @@ function analyzeFactory(source, factoryNode, moduleNames, exportsName, moduleNam
                 }
                 else if (callee.type === 'MemberExpression') {
                     const member = callee;
-                    if (!member.computed) {
-                        const property = member.property;
-                        if (property && property.type === 'Identifier') {
-                            const objectNode = member.object;
-                            const objectSnippet = objectNode && objectNode.type === 'Identifier'
-                                ? objectNode.name
-                                : (0, ast_1.createSnippet)(source, objectNode);
-                            callIdentifiers.add(`${objectSnippet}.${property.name}`);
-                        }
+                    if (!member.computed && member.property.type === 'Identifier') {
+                        const objectSnippet = member.object.type === 'Identifier'
+                            ? member.object.name
+                            : (0, ast_1.createSnippet)(source, member.object);
+                        callIdentifiers.add(`${objectSnippet}.${member.property.name}`);
                     }
                 }
             }
@@ -140,16 +136,14 @@ function collectModuleDeclarators(source) {
         if (!init || init.type !== 'CallExpression') {
             return;
         }
-        const callExpression = init;
-        const callee = callExpression.callee;
+        const callee = init.callee;
         if (!callee || callee.type !== 'Identifier' || callee.name !== 'U') {
             return;
         }
-        const callArguments = callExpression.arguments;
-        if (!Array.isArray(callArguments) || callArguments.length === 0) {
+        if (init.arguments.length === 0) {
             return;
         }
-        const factory = callArguments[0];
+        const factory = init.arguments[0];
         if (!factory || (factory.type !== 'ArrowFunctionExpression' && factory.type !== 'FunctionExpression')) {
             return;
         }
