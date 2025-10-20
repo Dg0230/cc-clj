@@ -1,0 +1,2650 @@
+{
+  "categories": [
+    {
+      "key": "commands/commander",
+      "description": "Commander CLI composition: command builder, arguments, options, and re-export facade.",
+      "suggestedDir": "src/commands",
+      "suggestedFile": "commander.ts",
+      "modules": [
+        {
+          "moduleId": "aC1",
+          "evidence": [
+            "commander.invalidargument",
+            "export:br8.commandererror"
+          ]
+        },
+        {
+          "moduleId": "He1",
+          "evidence": [
+            "export:wr8.argument",
+            "deps:aC1"
+          ]
+        },
+        {
+          "moduleId": "xs0",
+          "evidence": [
+            "export:fr8.help",
+            "deps:He1"
+          ]
+        },
+        {
+          "moduleId": "vs0",
+          "evidence": [
+            "export:zr8.option",
+            "deps:aC1"
+          ]
+        },
+        {
+          "moduleId": "RjQ",
+          "evidence": []
+        },
+        {
+          "moduleId": "SjQ",
+          "evidence": [
+            "commander.executesubcommandasync",
+            "export:tr8.command",
+            "deps:He1,RjQ,aC1,vs0,xs0"
+          ]
+        },
+        {
+          "moduleId": "xjQ",
+          "evidence": [
+            "export:yr8.createcommand",
+            "deps:He1,SjQ,aC1,vs0,xs0"
+          ]
+        },
+        {
+          "moduleId": "bjQ",
+          "evidence": [
+            "export:v$.argument",
+            "deps:xjQ"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "services/aws",
+      "description": "AWS SDK (Smithy-generated clients, credential providers, and auth helpers).",
+      "suggestedDir": "src/services/aws",
+      "suggestedFile": "sdk.ts",
+      "modules": [
+        {
+          "moduleId": "Z70",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "UG1",
+          "evidence": [
+            "aws_lambda_function_name"
+          ]
+        },
+        {
+          "moduleId": "W70",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "iTA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "W3",
+          "evidence": [
+            "getsmithycontext"
+          ]
+        },
+        {
+          "moduleId": "WPA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "HQ",
+          "evidence": [
+            "@smithy/util-utf8: toutf8 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "uPA",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "K70",
+          "evidence": [
+            "@smithy/util-stream: unsupported source type"
+          ]
+        },
+        {
+          "moduleId": "AjA",
+          "evidence": [
+            "@smithy/util-stream: unsupported source type"
+          ]
+        },
+        {
+          "moduleId": "VjA",
+          "evidence": [
+            "@smithy/util-stream - stream chunk size"
+          ]
+        },
+        {
+          "moduleId": "HjA",
+          "evidence": [
+            "@smithy/util-stream - stream chunk size"
+          ]
+        },
+        {
+          "moduleId": "kjA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "USA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "J4",
+          "evidence": [
+            "@smithy/core/schema - schema not found for"
+          ]
+        },
+        {
+          "moduleId": "yyA",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "H5",
+          "evidence": [
+            "@smithy/core/schema -"
+          ]
+        },
+        {
+          "moduleId": "hB",
+          "evidence": [
+            "getsmithycontext"
+          ]
+        },
+        {
+          "moduleId": "H_A",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "xe",
+          "evidence": [
+            "aws"
+          ]
+        },
+        {
+          "moduleId": "Wl",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "YL",
+          "evidence": [
+            "setcredentialfeature"
+          ]
+        },
+        {
+          "moduleId": "$Q",
+          "evidence": [
+            "@smithy/property-provider"
+          ]
+        },
+        {
+          "moduleId": "skA",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "UZ0",
+          "evidence": [
+            "` is not resolved for aws sdk sigv4auth"
+          ]
+        },
+        {
+          "moduleId": "UxA",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "ue",
+          "evidence": [
+            "smithy-protocol"
+          ]
+        },
+        {
+          "moduleId": "s4",
+          "evidence": [
+            "aws_use_dualstack_endpoint"
+          ]
+        },
+        {
+          "moduleId": "HbA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "iZ0",
+          "evidence": [
+            ".aws"
+          ]
+        },
+        {
+          "moduleId": "dbA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "z7",
+          "evidence": [
+            "aws_profile"
+          ]
+        },
+        {
+          "moduleId": "YfA",
+          "evidence": [
+            "aws_endpoint_url"
+          ]
+        },
+        {
+          "moduleId": "z5",
+          "evidence": [
+            "credentialscope"
+          ]
+        },
+        {
+          "moduleId": "BG0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "$6",
+          "evidence": [
+            "aws sdk error wrapper for"
+          ]
+        },
+        {
+          "moduleId": "OG0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "$gA",
+          "evidence": [
+            "@aws-sdk/client-bedrock"
+          ]
+        },
+        {
+          "moduleId": "RG0",
+          "evidence": [
+            "aws_access_key_id"
+          ]
+        },
+        {
+          "moduleId": "$I",
+          "evidence": [
+            "isimdscredentials"
+          ]
+        },
+        {
+          "moduleId": "lgA",
+          "evidence": [
+            "http credential provider response not of the required format, an object matching: { accesskeyid: string, secretaccesskey: string, token: string, expiration: string(rfc3339) }"
+          ]
+        },
+        {
+          "moduleId": "tgA",
+          "evidence": [
+            "aws_container_credentials_relative_uri"
+          ]
+        },
+        {
+          "moduleId": "bG0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "BuA",
+          "evidence": [
+            "@aws-sdk/client-sso"
+          ]
+        },
+        {
+          "moduleId": "lG1",
+          "evidence": [
+            "aws-sdk-js"
+          ]
+        },
+        {
+          "moduleId": "_uA",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "uuA",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "jJ",
+          "evidence": [
+            "aws_execution_env"
+          ]
+        },
+        {
+          "moduleId": "nG1",
+          "evidence": [
+            "getawsregionextensionconfiguration"
+          ]
+        },
+        {
+          "moduleId": "kmA",
+          "evidence": [
+            "awsssoportal"
+          ]
+        },
+        {
+          "moduleId": "nG0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "aG0",
+          "evidence": [
+            "@aws-sdk/nested-clients"
+          ]
+        },
+        {
+          "moduleId": "tmA",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "WdA",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "AY0",
+          "evidence": [
+            "sso-oauth"
+          ]
+        },
+        {
+          "moduleId": "QY0",
+          "evidence": [
+            "@aws-sdk/token-providers - fromenvsigningname"
+          ]
+        },
+        {
+          "moduleId": "GY0",
+          "evidence": [
+            "src/loadsso.ts"
+          ]
+        },
+        {
+          "moduleId": "WY0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "ycA",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "gcA",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "pcA",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "AY1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "lY0",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        },
+        {
+          "moduleId": "nY0",
+          "evidence": [
+            "credential_process did not return version 1."
+          ]
+        },
+        {
+          "moduleId": "aY0",
+          "evidence": [
+            "@aws-sdk/credential-provider-web-identity - fromwebtoken"
+          ]
+        },
+        {
+          "moduleId": "plA",
+          "evidence": [
+            "aws_web_identity_token_file"
+          ]
+        },
+        {
+          "moduleId": "BpA",
+          "evidence": [
+            "@aws-sdk/credential-provider-ini - credential_source is ecscontainer"
+          ]
+        },
+        {
+          "moduleId": "XpA",
+          "evidence": [
+            "aws_ec2_metadata_disabled"
+          ]
+        },
+        {
+          "moduleId": "OpA",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "kpA",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "upA",
+          "evidence": [
+            "bedrock"
+          ]
+        },
+        {
+          "moduleId": "eaA",
+          "evidence": [
+            "bedrock"
+          ]
+        },
+        {
+          "moduleId": "vR",
+          "evidence": [
+            "setcredentialfeature"
+          ]
+        },
+        {
+          "moduleId": "lW0",
+          "evidence": [
+            "aws_access_key_id"
+          ]
+        },
+        {
+          "moduleId": "usA",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "iW0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "RrA",
+          "evidence": [
+            "http credential provider response not of the required format, an object matching: { accesskeyid: string, secretaccesskey: string, token: string, expiration: string(rfc3339) }"
+          ]
+        },
+        {
+          "moduleId": "xrA",
+          "evidence": [
+            "aws_container_credentials_relative_uri"
+          ]
+        },
+        {
+          "moduleId": "lrA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "zoA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "DY1",
+          "evidence": [
+            "aws_lambda_function_name"
+          ]
+        },
+        {
+          "moduleId": "C11",
+          "evidence": [
+            "aws"
+          ]
+        },
+        {
+          "moduleId": "poA",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "RtA",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "VJ0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "weA",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "yeA",
+          "evidence": [
+            "` is not resolved for aws sdk sigv4auth"
+          ]
+        },
+        {
+          "moduleId": "B12",
+          "evidence": [
+            "awsexpectunion"
+          ]
+        },
+        {
+          "moduleId": "N11",
+          "evidence": [
+            "smithy-protocol"
+          ]
+        },
+        {
+          "moduleId": "mJ0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "l12",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "p12",
+          "evidence": [
+            "@aws-sdk/client-sso"
+          ]
+        },
+        {
+          "moduleId": "wY1",
+          "evidence": [
+            "aws-sdk-js"
+          ]
+        },
+        {
+          "moduleId": "lJ0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "y02",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "o02",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "YA2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "PY1",
+          "evidence": [
+            "getawsregionextensionconfiguration"
+          ]
+        },
+        {
+          "moduleId": "oA2",
+          "evidence": [
+            "awsssoportal"
+          ]
+        },
+        {
+          "moduleId": "FI0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "MI0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "RI0",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "TI0",
+          "evidence": [
+            "@aws-sdk/nested-clients"
+          ]
+        },
+        {
+          "moduleId": "WB2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "OB2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "kB2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "bI0",
+          "evidence": [
+            "sso-oauth"
+          ]
+        },
+        {
+          "moduleId": "OQ2",
+          "evidence": [
+            "to refresh this sso session run 'aws sso login' with the corresponding profile."
+          ]
+        },
+        {
+          "moduleId": "gI0",
+          "evidence": [
+            "src/loadsso.ts"
+          ]
+        },
+        {
+          "moduleId": "mI0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "X92",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "U92",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "M92",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "gY1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "MX0",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        },
+        {
+          "moduleId": "TX0",
+          "evidence": [
+            "credential_process did not return version 1."
+          ]
+        },
+        {
+          "moduleId": "PX0",
+          "evidence": [
+            "@aws-sdk/credential-provider-web-identity - fromwebtoken"
+          ]
+        },
+        {
+          "moduleId": "M42",
+          "evidence": [
+            "aws_web_identity_token_file"
+          ]
+        },
+        {
+          "moduleId": "x42",
+          "evidence": [
+            "@aws-sdk/credential-provider-ini - credential_source is ecscontainer"
+          ]
+        },
+        {
+          "moduleId": "vX0",
+          "evidence": [
+            "aws_ec2_metadata_disabled"
+          ]
+        },
+        {
+          "moduleId": "gj1",
+          "evidence": [
+            "access-control-allow-credentials"
+          ]
+        },
+        {
+          "moduleId": "k01",
+          "evidence": [
+            "request cannot be constructed from a url that includes credentials:"
+          ]
+        },
+        {
+          "moduleId": "IJ2",
+          "evidence": [
+            "use-credentials"
+          ]
+        },
+        {
+          "moduleId": "hI2",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "GX2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "jK0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "mX2",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "iX2",
+          "evidence": [
+            "getsmithycontext"
+          ]
+        },
+        {
+          "moduleId": "tW1",
+          "evidence": [
+            "@smithy/util-utf8: toutf8 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "kF2",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "Bp",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "XV2",
+          "evidence": [
+            "@aws-sdk/credential-providers - createcredentialchain(...).expireafter(ms) may not be called with a duration lower than five minutes."
+          ]
+        },
+        {
+          "moduleId": "lK0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "QJ1",
+          "evidence": [
+            "aws_lambda_function_name"
+          ]
+        },
+        {
+          "moduleId": "XA1",
+          "evidence": [
+            "aws"
+          ]
+        },
+        {
+          "moduleId": "Qp",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "RL",
+          "evidence": [
+            "setcredentialfeature"
+          ]
+        },
+        {
+          "moduleId": "WD2",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "ID0",
+          "evidence": [
+            "` is not resolved for aws sdk sigv4auth"
+          ]
+        },
+        {
+          "moduleId": "OD2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "zA1",
+          "evidence": [
+            "smithy-protocol"
+          ]
+        },
+        {
+          "moduleId": "yD0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "KH2",
+          "evidence": [
+            "@aws-sdk/client-cognito-identity"
+          ]
+        },
+        {
+          "moduleId": "_D0",
+          "evidence": [
+            "aws_access_key_id"
+          ]
+        },
+        {
+          "moduleId": "OH2",
+          "evidence": [
+            "http credential provider response not of the required format, an object matching: { accesskeyid: string, secretaccesskey: string, token: string, expiration: string(rfc3339) }"
+          ]
+        },
+        {
+          "moduleId": "kH2",
+          "evidence": [
+            "aws_container_credentials_relative_uri"
+          ]
+        },
+        {
+          "moduleId": "fD0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "bH2",
+          "evidence": [
+            "@aws-sdk/client-sso"
+          ]
+        },
+        {
+          "moduleId": "IJ1",
+          "evidence": [
+            "aws-sdk-js"
+          ]
+        },
+        {
+          "moduleId": "Wz2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "Hz2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "FJ1",
+          "evidence": [
+            "getawsregionextensionconfiguration"
+          ]
+        },
+        {
+          "moduleId": "BC2",
+          "evidence": [
+            "awsssoportal"
+          ]
+        },
+        {
+          "moduleId": "pD0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "iD0",
+          "evidence": [
+            "@aws-sdk/nested-clients"
+          ]
+        },
+        {
+          "moduleId": "EC2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "PC2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "tD0",
+          "evidence": [
+            "sso-oauth"
+          ]
+        },
+        {
+          "moduleId": "CU2",
+          "evidence": [
+            "@aws-sdk/token-providers - fromenvsigningname"
+          ]
+        },
+        {
+          "moduleId": "BH0",
+          "evidence": [
+            "src/loadsso.ts"
+          ]
+        },
+        {
+          "moduleId": "ZH0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "A$2",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "I$2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "H$2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "UJ1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "mH0",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        },
+        {
+          "moduleId": "lH0",
+          "evidence": [
+            "credential_process did not return version 1."
+          ]
+        },
+        {
+          "moduleId": "pH0",
+          "evidence": [
+            "@aws-sdk/credential-provider-web-identity - fromwebtoken"
+          ]
+        },
+        {
+          "moduleId": "Hq2",
+          "evidence": [
+            "aws_web_identity_token_file"
+          ]
+        },
+        {
+          "moduleId": "Mq2",
+          "evidence": [
+            "@aws-sdk/credential-provider-ini - credential_source is ecscontainer"
+          ]
+        },
+        {
+          "moduleId": "_q2",
+          "evidence": [
+            "aws_ec2_metadata_disabled"
+          ]
+        },
+        {
+          "moduleId": "sq2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "ZE2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Iw2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Iz0",
+          "evidence": [
+            "@aws-sdk/credential-provider-cognito-identity - fromcognitoidentity"
+          ]
+        },
+        {
+          "moduleId": "Pw2",
+          "evidence": [
+            "@smithy/credential-provider-imds"
+          ]
+        },
+        {
+          "moduleId": "CE",
+          "evidence": [
+            "setcredentialfeature"
+          ]
+        },
+        {
+          "moduleId": "Fz0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "WN2",
+          "evidence": [
+            "http credential provider response not of the required format, an object matching: { accesskeyid: string, secretaccesskey: string, token: string, expiration: string(rfc3339) }"
+          ]
+        },
+        {
+          "moduleId": "HN2",
+          "evidence": [
+            "aws_container_credentials_relative_uri"
+          ]
+        },
+        {
+          "moduleId": "Nk1",
+          "evidence": [
+            "aws_access_key_id"
+          ]
+        },
+        {
+          "moduleId": "Sk1",
+          "evidence": [
+            "aws_lambda_function_name"
+          ]
+        },
+        {
+          "moduleId": "OJ1",
+          "evidence": [
+            "aws"
+          ]
+        },
+        {
+          "moduleId": "jL2",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "vz0",
+          "evidence": [
+            "` is not resolved for aws sdk sigv4auth"
+          ]
+        },
+        {
+          "moduleId": "aL2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "yJ1",
+          "evidence": [
+            "smithy-protocol"
+          ]
+        },
+        {
+          "moduleId": "oz0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "tz0",
+          "evidence": [
+            "@aws-sdk/nested-clients"
+          ]
+        },
+        {
+          "moduleId": "sk1",
+          "evidence": [
+            "aws-sdk-js"
+          ]
+        },
+        {
+          "moduleId": "WO2",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "HO2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "EO2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "tk1",
+          "evidence": [
+            "getawsregionextensionconfiguration"
+          ]
+        },
+        {
+          "moduleId": "_J1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Ax1",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        },
+        {
+          "moduleId": "Qx1",
+          "evidence": [
+            "credential_process did not return version 1."
+          ]
+        },
+        {
+          "moduleId": "uC0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "OR2",
+          "evidence": [
+            "@aws-sdk/client-sso"
+          ]
+        },
+        {
+          "moduleId": "dR2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "rR2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "yT2",
+          "evidence": [
+            "awsssoportal"
+          ]
+        },
+        {
+          "moduleId": "nC0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "rT2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "GP2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "eC0",
+          "evidence": [
+            "sso-oauth"
+          ]
+        },
+        {
+          "moduleId": "iP2",
+          "evidence": [
+            "@aws-sdk/token-providers - fromenvsigningname"
+          ]
+        },
+        {
+          "moduleId": "Ux1",
+          "evidence": [
+            "src/loadsso.ts"
+          ]
+        },
+        {
+          "moduleId": "QU0",
+          "evidence": [
+            "@aws-sdk/credential-provider-web-identity - fromwebtoken"
+          ]
+        },
+        {
+          "moduleId": "Yj2",
+          "evidence": [
+            "aws_web_identity_token_file"
+          ]
+        },
+        {
+          "moduleId": "JU0",
+          "evidence": [
+            "@aws-sdk/credential-provider-ini - credential_source is ecscontainer"
+          ]
+        },
+        {
+          "moduleId": "Ej2",
+          "evidence": [
+            "@smithy/credential-provider-imds"
+          ]
+        },
+        {
+          "moduleId": "Pj2",
+          "evidence": [
+            "aws_ec2_metadata_disabled"
+          ]
+        },
+        {
+          "moduleId": "mj2",
+          "evidence": [
+            "@aws-sdk/credential-providers - fromtemporarycredentials (sts)"
+          ]
+        },
+        {
+          "moduleId": "Mx1",
+          "evidence": [
+            "awscrc32"
+          ]
+        },
+        {
+          "moduleId": "xy2",
+          "evidence": [
+            "@smithy/util-utf8: toutf8 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "fy2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "B_2",
+          "evidence": [
+            "@smithy/util-utf8: toutf8 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "qk2",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "xk2",
+          "evidence": [
+            "awsauthmiddleware"
+          ]
+        },
+        {
+          "moduleId": "rU0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "Hx2",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "zx2",
+          "evidence": [
+            "@aws-sdk/client-bedrock-runtime"
+          ]
+        },
+        {
+          "moduleId": "eU0",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "Bv2",
+          "evidence": [
+            "@smithy/util-utf8: toutf8 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "Iv1",
+          "evidence": [
+            "awscrc32"
+          ]
+        },
+        {
+          "moduleId": "I$0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "qb2",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "hb2",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "ib2",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "vh2",
+          "evidence": [
+            "bedrock"
+          ]
+        },
+        {
+          "moduleId": "Cm2",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "jh",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "yT",
+          "evidence": [
+            "credentials"
+          ]
+        },
+        {
+          "moduleId": "Tc2",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "qE0",
+          "evidence": [
+            "service account user is configured for the credential. domain-wide delegation is not supported in universes other than"
+          ]
+        },
+        {
+          "moduleId": "wE0",
+          "evidence": [
+            "in source credentials does not match"
+          ]
+        },
+        {
+          "moduleId": "yh",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "tc2",
+          "evidence": [
+            "unable to parse the subject_token from the credential_source file"
+          ]
+        },
+        {
+          "moduleId": "Ql2",
+          "evidence": [
+            "unable to parse the subject_token from the credential_source url"
+          ]
+        },
+        {
+          "moduleId": "vE0",
+          "evidence": [
+            "credential_source"
+          ]
+        },
+        {
+          "moduleId": "bE0",
+          "evidence": [
+            "aws4-hmac-sha256"
+          ]
+        },
+        {
+          "moduleId": "Dl2",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "gE0",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "fb1",
+          "evidence": [
+            "no valid pluggable auth \"credential_source\" provided."
+          ]
+        },
+        {
+          "moduleId": "dl2",
+          "evidence": [
+            "private accessor was defined without a getter"
+          ]
+        },
+        {
+          "moduleId": "il2",
+          "evidence": [
+            "x-goog-iam-authority-selector"
+          ]
+        },
+        {
+          "moduleId": "rl2",
+          "evidence": [
+            "the access token expiry_date field is missing in the provided credentials."
+          ]
+        },
+        {
+          "moduleId": "Yw0",
+          "evidence": [
+            "iamauth"
+          ]
+        },
+        {
+          "moduleId": "go2",
+          "evidence": [
+            "\\[/noprocess|<\\?(lasso(script)?|=)"
+          ]
+        },
+        {
+          "moduleId": "mo2",
+          "evidence": [
+            "(?:declareoption|processoptions)"
+          ]
+        },
+        {
+          "moduleId": "i1B",
+          "evidence": [
+            "associatedtype"
+          ]
+        },
+        {
+          "moduleId": "HT0",
+          "evidence": [
+            "crossorigin"
+          ]
+        },
+        {
+          "moduleId": "YV1",
+          "evidence": [
+            "globaleventprocessors"
+          ]
+        },
+        {
+          "moduleId": "FbB",
+          "evidence": [
+            "aws.lambda.invoked_arn"
+          ]
+        },
+        {
+          "moduleId": "uhB",
+          "evidence": [
+            "aws.ecs.container.arn"
+          ]
+        },
+        {
+          "moduleId": "BdB",
+          "evidence": [
+            "processor_architew6432"
+          ]
+        },
+        {
+          "moduleId": "ccB",
+          "evidence": [
+            "batchobservablecallback is not associated with valid instruments"
+          ]
+        },
+        {
+          "moduleId": "qu",
+          "evidence": [
+            "createallowlistattributesprocessor"
+          ]
+        },
+        {
+          "moduleId": "$41",
+          "evidence": [
+            "cannot compose insecure credentials"
+          ]
+        },
+        {
+          "moduleId": "qeB",
+          "evidence": [
+            "credentials metadata generation finished after call ended"
+          ]
+        },
+        {
+          "moduleId": "yh0",
+          "evidence": [
+            "channel credentials must be a channelcredentials object"
+          ]
+        },
+        {
+          "moduleId": "Vf0",
+          "evidence": [
+            "channel credentials must be a channelcredentials object"
+          ]
+        },
+        {
+          "moduleId": "b1Q",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "pD1",
+          "evidence": [
+            "callcredentials"
+          ]
+        },
+        {
+          "moduleId": "HAQ",
+          "evidence": [
+            "client key and certificate must both be provided, but one was missing - attempting to create credentials from just the root certificate"
+          ]
+        },
+        {
+          "moduleId": "E2Q",
+          "evidence": [
+            "simplelogrecordprocessor: log record export failed (status"
+          ]
+        },
+        {
+          "moduleId": "j2Q",
+          "evidence": [
+            "batchlogrecordprocessor: maxexportbatchsize must be smaller or equal to maxqueuesize, setting maxexportbatchsize to match maxqueuesize"
+          ]
+        },
+        {
+          "moduleId": "x2Q",
+          "evidence": [
+            "batchlogrecordprocessor"
+          ]
+        },
+        {
+          "moduleId": "v2Q",
+          "evidence": [
+            "batchlogrecordprocessor"
+          ]
+        },
+        {
+          "moduleId": "b2Q",
+          "evidence": [
+            "nooplogrecordprocessor"
+          ]
+        },
+        {
+          "moduleId": "nBQ",
+          "evidence": [
+            "batchspanprocessor: maxexportbatchsize must be smaller or equal to maxqueuesize, setting maxexportbatchsize to match maxqueuesize"
+          ]
+        },
+        {
+          "moduleId": "GQQ",
+          "evidence": [
+            "batchspanprocessor"
+          ]
+        },
+        {
+          "moduleId": "dg0",
+          "evidence": [
+            "batchspanprocessor"
+          ]
+        },
+        {
+          "moduleId": "DQQ",
+          "evidence": [
+            "multispanprocessor: forceflush failed"
+          ]
+        },
+        {
+          "moduleId": "$QQ",
+          "evidence": [
+            "span processor did not completed within timeout period of"
+          ]
+        },
+        {
+          "moduleId": "yQQ",
+          "evidence": [
+            "simplespanprocessor: span export failed (status"
+          ]
+        },
+        {
+          "moduleId": "fQQ",
+          "evidence": [
+            "batchspanprocessor"
+          ]
+        },
+        {
+          "moduleId": "Ms1",
+          "evidence": [
+            "use-credentials"
+          ]
+        },
+        {
+          "moduleId": "Zc0",
+          "evidence": [
+            "__smithy_context"
+          ]
+        },
+        {
+          "moduleId": "Yz1",
+          "evidence": [
+            "aws_lambda_function_name"
+          ]
+        },
+        {
+          "moduleId": "i61",
+          "evidence": [
+            "aws"
+          ]
+        },
+        {
+          "moduleId": "ia",
+          "evidence": [
+            "accessor"
+          ]
+        },
+        {
+          "moduleId": "vw",
+          "evidence": [
+            "setcredentialfeature"
+          ]
+        },
+        {
+          "moduleId": "GIQ",
+          "evidence": [
+            "x-amz-credential"
+          ]
+        },
+        {
+          "moduleId": "wc0",
+          "evidence": [
+            "` is not resolved for aws sdk sigv4auth"
+          ]
+        },
+        {
+          "moduleId": "LIQ",
+          "evidence": [
+            "@smithy/util-base64: tobase64 encoder function only accepts string | uint8array."
+          ]
+        },
+        {
+          "moduleId": "t61",
+          "evidence": [
+            "smithy-protocol"
+          ]
+        },
+        {
+          "moduleId": "lc0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "HXQ",
+          "evidence": [
+            "@aws-sdk/client-sts"
+          ]
+        },
+        {
+          "moduleId": "pc0",
+          "evidence": [
+            "aws_access_key_id"
+          ]
+        },
+        {
+          "moduleId": "TXQ",
+          "evidence": [
+            "http credential provider response not of the required format, an object matching: { accesskeyid: string, secretaccesskey: string, token: string, expiration: string(rfc3339) }"
+          ]
+        },
+        {
+          "moduleId": "vXQ",
+          "evidence": [
+            "aws_container_credentials_relative_uri"
+          ]
+        },
+        {
+          "moduleId": "rc0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "hXQ",
+          "evidence": [
+            "@aws-sdk/client-sso"
+          ]
+        },
+        {
+          "moduleId": "Kz1",
+          "evidence": [
+            "aws-sdk-js"
+          ]
+        },
+        {
+          "moduleId": "IFQ",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "CFQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Hz1",
+          "evidence": [
+            "getawsregionextensionconfiguration"
+          ]
+        },
+        {
+          "moduleId": "ZVQ",
+          "evidence": [
+            "awsssoportal"
+          ]
+        },
+        {
+          "moduleId": "Gl0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "Yl0",
+          "evidence": [
+            "@aws-sdk/nested-clients"
+          ]
+        },
+        {
+          "moduleId": "NVQ",
+          "evidence": [
+            "aws.partition"
+          ]
+        },
+        {
+          "moduleId": "SVQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Vl0",
+          "evidence": [
+            "sso-oauth"
+          ]
+        },
+        {
+          "moduleId": "$KQ",
+          "evidence": [
+            "@aws-sdk/token-providers - fromenvsigningname"
+          ]
+        },
+        {
+          "moduleId": "Hl0",
+          "evidence": [
+            "src/loadsso.ts"
+          ]
+        },
+        {
+          "moduleId": "Cl0",
+          "evidence": [
+            "expected `region` to be configured for `aws.auth#sigv4`"
+          ]
+        },
+        {
+          "moduleId": "QDQ",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "FDQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "CDQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "wz1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Ap0",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        },
+        {
+          "moduleId": "Zp0",
+          "evidence": [
+            "credential_process did not return version 1."
+          ]
+        },
+        {
+          "moduleId": "Gp0",
+          "evidence": [
+            "@aws-sdk/credential-provider-web-identity - fromwebtoken"
+          ]
+        },
+        {
+          "moduleId": "CHQ",
+          "evidence": [
+            "aws_web_identity_token_file"
+          ]
+        },
+        {
+          "moduleId": "RHQ",
+          "evidence": [
+            "@aws-sdk/credential-provider-ini - credential_source is ecscontainer"
+          ]
+        },
+        {
+          "moduleId": "xHQ",
+          "evidence": [
+            "aws_ec2_metadata_disabled"
+          ]
+        },
+        {
+          "moduleId": "GzQ",
+          "evidence": [
+            "sigv4"
+          ]
+        },
+        {
+          "moduleId": "KzQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "qzQ",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "Vz1",
+          "evidence": [
+            "aws.auth#sigv4"
+          ]
+        },
+        {
+          "moduleId": "$CQ",
+          "evidence": [
+            "credentialsfiltersensitivelog"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "services/telemetry",
+      "description": "OpenTelemetry API wiring and baggage/span utilities.",
+      "suggestedDir": "src/services/telemetry",
+      "suggestedFile": "opentelemetry.ts",
+      "modules": [
+        {
+          "moduleId": "mn",
+          "evidence": [
+            "opentelemetry.js.api."
+          ]
+        },
+        {
+          "moduleId": "Dx0",
+          "evidence": [
+            "opentelemetry context key span"
+          ]
+        },
+        {
+          "moduleId": "kPB",
+          "evidence": [
+            "opentelemetry baggage key"
+          ]
+        },
+        {
+          "moduleId": "LjB",
+          "evidence": [
+            "io.opentelemetry.js.api.logs"
+          ]
+        },
+        {
+          "moduleId": "SK1",
+          "evidence": [
+            "opentelemetry sdk context key suppress_tracing"
+          ]
+        },
+        {
+          "moduleId": "YgB",
+          "evidence": [
+            "opentelemetry"
+          ]
+        },
+        {
+          "moduleId": "ugB",
+          "evidence": [
+            "opentelemetry sdk context key rpc_metadata"
+          ]
+        },
+        {
+          "moduleId": "fmB",
+          "evidence": [
+            "otel_resource_attributes"
+          ]
+        },
+        {
+          "moduleId": "gv0",
+          "evidence": [
+            "otel.metric.overflow"
+          ]
+        },
+        {
+          "moduleId": "ov0",
+          "evidence": [
+            "otel_exporter_otlp_metrics_temporality_preference"
+          ]
+        },
+        {
+          "moduleId": "Di1",
+          "evidence": [
+            ".opentelemetry.proto.common.v1.anyvalue.arrayvalue: object expected"
+          ]
+        },
+        {
+          "moduleId": "yb0",
+          "evidence": [
+            "otel_exporter_otlp_"
+          ]
+        },
+        {
+          "moduleId": "nnB",
+          "evidence": [
+            "otel_exporter_otlp_"
+          ]
+        },
+        {
+          "moduleId": "BaB",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "VaB",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "JAQ",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "RAQ",
+          "evidence": [
+            "/opentelemetry.proto.collector.metrics.v1.metricsservice/export"
+          ]
+        },
+        {
+          "moduleId": "nAQ",
+          "evidence": [
+            "otel_logrecord_attribute_value_length_limit"
+          ]
+        },
+        {
+          "moduleId": "l2Q",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "t2Q",
+          "evidence": [
+            "/opentelemetry.proto.collector.logs.v1.logsservice/export"
+          ]
+        },
+        {
+          "moduleId": "JBQ",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "ug0",
+          "evidence": [
+            "otel_attribute_value_length_limit"
+          ]
+        },
+        {
+          "moduleId": "mg0",
+          "evidence": [
+            "otel_span_attribute_count_limit"
+          ]
+        },
+        {
+          "moduleId": "pQQ",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        },
+        {
+          "moduleId": "eQQ",
+          "evidence": [
+            "/opentelemetry.proto.collector.trace.v1.traceservice/export"
+          ]
+        },
+        {
+          "moduleId": "I9Q",
+          "evidence": [
+            "otel-otlp-exporter-javascript/"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "services/http",
+      "description": "Axios HTTP client helpers.",
+      "suggestedDir": "src/services/http",
+      "suggestedFile": "axios.ts",
+      "modules": [
+        {
+          "moduleId": "nu2",
+          "evidence": [
+            "gaxios"
+          ]
+        },
+        {
+          "moduleId": "_q0",
+          "evidence": [
+            "-gaxios-error"
+          ]
+        },
+        {
+          "moduleId": "_L",
+          "evidence": [
+            "gaxios"
+          ]
+        },
+        {
+          "moduleId": "Yd2",
+          "evidence": [
+            "' instead. this library is using axios for requests. please see https://github.com/axios/axios to learn more about the valid request options."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ui/react",
+      "description": "React core runtime exports.",
+      "suggestedDir": "src/ui/react",
+      "suggestedFile": "react.ts",
+      "modules": [
+        {
+          "moduleId": "K1",
+          "evidence": [
+            "react.element",
+            "react.portal",
+            "react.fragment"
+          ]
+        },
+        {
+          "moduleId": "P$A",
+          "evidence": [
+            "react.element",
+            "react.portal",
+            "react.fragment"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ui/terminal",
+      "description": "Terminal styling utilities (Chalk).",
+      "suggestedDir": "src/ui/terminal",
+      "suggestedFile": "chalk.ts",
+      "modules": [
+        {
+          "moduleId": "j2B",
+          "evidence": [
+            "invalid chalk template style argument:"
+          ]
+        },
+        {
+          "moduleId": "f2B",
+          "evidence": [
+            "`chalk.constructor()` is deprecated. use `new chalk.instance()` instead."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "utils/validation",
+      "description": "Schema validation helpers (Ajv / JSON schema tooling).",
+      "suggestedDir": "src/utils/validation",
+      "suggestedFile": "schema.ts",
+      "modules": [
+        {
+          "moduleId": "rt",
+          "evidence": [
+            "utf-8-validate"
+          ]
+        },
+        {
+          "moduleId": "dG1",
+          "evidence": [
+            "validate"
+          ]
+        },
+        {
+          "moduleId": "Ie2",
+          "evidence": [
+            "current_time current_timestamp current_user current_catalog|10 current_date localtime localtimestamp current_role|10 current_schema|10 session_user public"
+          ]
+        },
+        {
+          "moduleId": "qM0",
+          "evidence": [
+            "var validate ="
+          ]
+        },
+        {
+          "moduleId": "RQB",
+          "evidence": [
+            "error compiling schema, function code:"
+          ]
+        },
+        {
+          "moduleId": "dQB",
+          "evidence": [
+            "validate"
+          ]
+        },
+        {
+          "moduleId": "iQB",
+          "evidence": [
+            ", schemapath:"
+          ]
+        },
+        {
+          "moduleId": "aQB",
+          "evidence": [
+            ", validate.root.schema);"
+          ]
+        },
+        {
+          "moduleId": "rQB",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "Q9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "G9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "I9B",
+          "evidence": [
+            ", schemapath:"
+          ]
+        },
+        {
+          "moduleId": "wM0",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "NM0",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "LM0",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "MM0",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "H9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "C9B",
+          "evidence": [
+            ", schemapath:"
+          ]
+        },
+        {
+          "moduleId": "$9B",
+          "evidence": [
+            "passingschemas"
+          ]
+        },
+        {
+          "moduleId": "E9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "R9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "P9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "b9B",
+          "evidence": [
+            "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#"
+          ]
+        },
+        {
+          "moduleId": "g9B",
+          "evidence": [
+            "options.loadschema should be a function"
+          ]
+        },
+        {
+          "moduleId": "m9B",
+          "evidence": [
+            "var schema"
+          ]
+        },
+        {
+          "moduleId": "RM0",
+          "evidence": [
+            "http://json-schema.org/draft-07/schema#"
+          ]
+        },
+        {
+          "moduleId": "l9B",
+          "evidence": [
+            "https://github.com/ajv-validator/ajv/blob/master/lib/definition_schema.js"
+          ]
+        },
+        {
+          "moduleId": "i9B",
+          "evidence": [
+            "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#"
+          ]
+        },
+        {
+          "moduleId": "n9B",
+          "evidence": [
+            "http://json-schema.org/draft-07/schema#"
+          ]
+        },
+        {
+          "moduleId": "jM0",
+          "evidence": [
+            "http://json-schema.org/draft-07/schema"
+          ]
+        },
+        {
+          "moduleId": "nT0",
+          "evidence": [
+            "schema.extend argument should be a type, [ type ], or a schema definition ({ implicit: [...], explicit: [...] })"
+          ]
+        },
+        {
+          "moduleId": "RJB",
+          "evidence": [
+            "schema"
+          ]
+        },
+        {
+          "moduleId": "uJB",
+          "evidence": [
+            "\" is not a valid json schema"
+          ]
+        },
+        {
+          "moduleId": "MCB",
+          "evidence": [
+            "mergewithschema"
+          ]
+        },
+        {
+          "moduleId": "Sv0",
+          "evidence": [
+            "schema url must be string or undefined, got %s. schema url will be ignored."
+          ]
+        },
+        {
+          "moduleId": "Tn1",
+          "evidence": [
+            "/../../proto/protoc-gen-validate"
+          ]
+        },
+        {
+          "moduleId": "r4Q",
+          "evidence": [
+            "validate-if-schema"
+          ]
+        }
+      ]
+    }
+  ],
+  "unmatchedCount": 1921,
+  "unmatchedSample": [
+    {
+      "moduleId": "W2A",
+      "strings": [
+        "stream",
+        "util",
+        "error"
+      ],
+      "targets": [
+        "y2a.exports"
+      ]
+    },
+    {
+      "moduleId": "F2A",
+      "strings": [
+        "util",
+        "stream",
+        "function"
+      ],
+      "targets": [
+        "x2a.exports"
+      ]
+    },
+    {
+      "moduleId": "V2A",
+      "strings": [
+        "application/1d-interleaved-parityfec",
+        "iana",
+        "application/3gpdash-qoe-report+xml"
+      ],
+      "targets": [
+        "kcq.exports"
+      ]
+    },
+    {
+      "moduleId": "D2A",
+      "strings": [],
+      "targets": [
+        "k2a.exports"
+      ]
+    },
+    {
+      "moduleId": "$2A",
+      "strings": [
+        "path",
+        "string",
+        "utf-8"
+      ],
+      "targets": [
+        "qcq.charset",
+        "qcq.charsets",
+        "qcq.contenttype"
+      ]
+    },
+    {
+      "moduleId": "E2A",
+      "strings": [
+        "function",
+        "object"
+      ],
+      "targets": [
+        "q2a.exports"
+      ]
+    },
+    {
+      "moduleId": "b00",
+      "strings": [],
+      "targets": [
+        "n2a.exports"
+      ]
+    },
+    {
+      "moduleId": "f00",
+      "strings": [
+        "function"
+      ],
+      "targets": [
+        "l2a.exports"
+      ]
+    },
+    {
+      "moduleId": "h00",
+      "strings": [],
+      "targets": [
+        "o2a.exports"
+      ]
+    },
+    {
+      "moduleId": "g00",
+      "strings": [],
+      "targets": [
+        "r2a.exports"
+      ]
+    },
+    {
+      "moduleId": "u00",
+      "strings": [],
+      "targets": [
+        "t2a.exports"
+      ]
+    },
+    {
+      "moduleId": "j2A",
+      "strings": [],
+      "targets": [
+        "p2a.exports"
+      ]
+    },
+    {
+      "moduleId": "m00",
+      "strings": [],
+      "targets": [
+        "xq1.exports",
+        "xq1.exports.ascending",
+        "xq1.exports.descending"
+      ]
+    },
+    {
+      "moduleId": "k2A",
+      "strings": [],
+      "targets": [
+        "_2a.exports"
+      ]
+    },
+    {
+      "moduleId": "v2A",
+      "strings": [],
+      "targets": [
+        "x2a.exports"
+      ]
+    },
+    {
+      "moduleId": "d00",
+      "strings": [],
+      "targets": [
+        "b2a.exports"
+      ]
+    },
+    {
+      "moduleId": "h2A",
+      "strings": [],
+      "targets": [
+        "f2a.exports"
+      ]
+    },
+    {
+      "moduleId": "u2A",
+      "strings": [],
+      "targets": [
+        "g2a.exports"
+      ]
+    },
+    {
+      "moduleId": "d2A",
+      "strings": [],
+      "targets": [
+        "m2a.exports"
+      ]
+    },
+    {
+      "moduleId": "l2A",
+      "strings": [],
+      "targets": [
+        "c2a.exports"
+      ]
+    }
+  ]
+}
