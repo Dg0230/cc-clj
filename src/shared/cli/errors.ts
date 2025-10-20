@@ -17,13 +17,9 @@ export class CommanderError extends Error {
   }
 }
 
-export class InvalidArgumentError extends Error {
+export class InvalidArgumentError extends CommanderError {
   constructor(message: string) {
-    super(message);
+    super('commander.invalidArgument', 1, message);
     this.name = 'InvalidArgumentError';
   }
-}
-
-export function todo(message: string = 'TODO: Commander error behaviour not yet implemented.'): never {
-  throw new CommanderError('commander.todo', 1, message);
 }

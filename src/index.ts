@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import { Command, createCommand } from './commands/commander';
-import { Option } from './commands/option';
+import { Command, Option, createCommand } from './commands/commander';
 import {
   analyzeAndWrite,
   DEFAULT_ANALYSIS_OUTPUT_PATH,

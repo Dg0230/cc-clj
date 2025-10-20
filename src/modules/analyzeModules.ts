@@ -110,12 +110,16 @@ function analyzeFactory(
           callIdentifiers.add((callee as Identifier).name);
         } else if (callee.type === 'MemberExpression') {
           const member = callee as MemberExpression;
-          if (!member.computed && member.property.type === 'Identifier') {
-            const objectSnippet =
-              member.object.type === 'Identifier'
-                ? (member.object as Identifier).name
-                : createSnippet(source, member.object);
-            callIdentifiers.add(`${objectSnippet}.${(member.property as Identifier).name}`);
+          if (!member.computed) {
+            const property = member.property;
+            if (property && property.type === 'Identifier') {
+              const objectNode = member.object;
+              const objectSnippet =
+                objectNode && objectNode.type === 'Identifier'
+                  ? (objectNode as Identifier).name
+                  : createSnippet(source, objectNode);
+              callIdentifiers.add(`${objectSnippet}.${(property as Identifier).name}`);
+            }
           }
         }
       }
@@ -185,14 +189,16 @@ function collectModuleDeclarators(source: string): ModuleDeclarator[] {
     if (!init || init.type !== 'CallExpression') {
       return;
     }
-    const callee = init.callee;
+    const callExpression = init as CallExpression;
+    const callee = callExpression.callee;
     if (!callee || callee.type !== 'Identifier' || (callee as Identifier).name !== 'U') {
       return;
     }
-    if (init.arguments.length === 0) {
+    const callArguments = callExpression.arguments;
+    if (!Array.isArray(callArguments) || callArguments.length === 0) {
       return;
     }
-    const factory = init.arguments[0];
+    const factory = callArguments[0];
     if (!factory || (factory.type !== 'ArrowFunctionExpression' && factory.type !== 'FunctionExpression')) {
       return;
     }

@@ -1,5 +1,8 @@
+import { parseTemplate } from './internal/template';
+import { ChalkFactory, DEFAULT_THEME, toJson, fromJson } from './internal/factory';
 /**
- * Placeholder for the Chalk-based terminal styling helpers.
- *
- * Source bundle module IDs earmarked for migration: j2B, f2B
+ * Chalk facade aligning with bundle exports.
  */
+export { ChalkFactory as Chalk, DEFAULT_THEME, toJson, fromJson, parseTemplate };
+declare const chalk: ChalkFactory;
+export default chalk;

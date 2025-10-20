@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from './errors';
+import { InvalidArgumentError } from '../../shared/cli/errors';
 
 /**
  * Placeholder for the Commander `Argument` implementation (bundle module `He1`).
@@ -6,18 +6,57 @@ import { InvalidArgumentError } from './errors';
 // TODO(He1): Port Argument behaviour from cli-origin.js.
 export type ArgumentParser<T> = (value: string, previous?: T) => T;
 
+function normalizeName(name: string): { baseName: string; variadic: boolean; required: boolean } {
+  const trimmed = name.trim();
+  const required = trimmed.startsWith('<');
+  const optional = trimmed.startsWith('[');
+  const inner = trimmed.replace(/^[[<]/, '').replace(/[>\]]$/, '');
+  const variadic = inner.endsWith('...');
+  const baseName = variadic ? inner.slice(0, -3) : inner;
+  return {
+    baseName: baseName || trimmed,
+    variadic,
+    required: required || (!required && !optional),
+  };
+}
+
 export class Argument<T = unknown> {
+  private readonly _rawName: string;
+  private readonly _name: string;
+  private readonly _required: boolean;
+  private readonly _variadic: boolean;
   private _description?: string;
   private _defaultValue?: T | (() => T);
   private _parser?: ArgumentParser<T>;
   private _choices?: Set<T>;
 
-  constructor(private readonly _name: string, description?: string) {
+  constructor(name: string, description?: string) {
+    this._rawName = name;
+    const normalized = normalizeName(name);
+    this._name = normalized.baseName;
+    this._required = normalized.required;
+    this._variadic = normalized.variadic;
     this._description = description;
   }
 
   public name(): string {
     return this._name;
+  }
+
+  public rawName(): string {
+    return this._rawName;
+  }
+
+  public isRequired(): boolean {
+    return this._required && !this._variadicOptionalFallback;
+  }
+
+  public isOptional(): boolean {
+    return !this.isRequired();
+  }
+
+  public isVariadic(): boolean {
+    return this._variadic;
   }
 
   public description(description?: string): string | this {
@@ -57,8 +96,18 @@ export class Argument<T = unknown> {
     }
     return this._defaultValue;
   }
+
+  private get _variadicOptionalFallback(): boolean {
+    return this._variadic && !this._required;
+  }
 }
 
 export function argument<T = unknown>(name: string, description?: string): Argument<T> {
   return new Argument<T>(name, description);
+}
+
+export function humanReadableArgName(arg: Argument): string {
+  const suffix = arg.isVariadic() ? '...' : '';
+  const name = `${arg.name()}${suffix}`;
+  return arg.isRequired() ? `<${name}>` : `[${name}]`;
 }
