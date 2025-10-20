@@ -2,11 +2,24 @@
   "name": "cc-clj-analysis",
   "version": "1.0.0",
   "private": true,
+  "bin": {
+    "cc-clj": "dist/index.js"
+  },
   "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "jest",
     "analyze": "node analyze-modules.js"
   },
   "dependencies": {
     "@babel/parser": "^7.24.0",
     "@babel/traverse": "^7.24.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.19",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.4.0"
   }
 }
