@@ -1,8 +1,18 @@
 /**
- * Placeholder implementation for the Commander CLI integration.
+ * Commander CLI integration staged from bundle module `bjQ`.
  *
- * Source bundle module IDs earmarked for migration:
- * aC1, He1, xs0, vs0, RjQ, SjQ, xjQ, bjQ
+ * The module re-exports the placeholder implementations defined in sibling files
+ * so the eventual port can retain the original surface area.
  */
-
-// TODO: Reconstruct Commander-based command/option scaffolding from cli-origin.js modules.
+// TODO(bjQ): Keep exports aligned with cli-origin.js aggregator module.
+export {
+  Argument,
+  argument,
+  Command,
+  CommanderError,
+  Help,
+  InvalidArgumentError,
+  Option,
+  createCommand,
+  program,
+} from './factory';
