@@ -2,6 +2,18 @@
 
 import { Command, createCommand } from './commands/commander';
 import { Option } from './commands/option';
+import {
+  analyzeAndWrite,
+  DEFAULT_ANALYSIS_OUTPUT_PATH,
+  DEFAULT_BUNDLE_PATH,
+  type ModuleAnalysisOptions,
+} from './modules/analyzeModules';
+import {
+  categorizeModules,
+  DEFAULT_CATEGORY_OUTPUT_PATH,
+  DEFAULT_CATEGORIZE_ANALYSIS_PATH,
+} from './modules/categorizeModules';
+import { summarizeModules, DEFAULT_SUMMARY_ANALYSIS_PATH } from './modules/summarizeModules';
 
 declare const process: { argv: string[] };
 declare const require: {
@@ -17,6 +29,7 @@ export interface ExecutionRecord {
     profile: string;
     uppercase: boolean;
   } & Record<string, unknown>;
+  result?: unknown;
 }
 
 export interface AppConfiguration {
@@ -77,10 +90,11 @@ export class RuntimeService {
     private readonly httpClient: HttpClientService,
   ) {}
 
-  public record(execution: ExecutionRecord): void {
+  public record(execution: ExecutionRecord): ExecutionRecord {
     this.executions.push(execution);
     this.telemetry.log(`command.${execution.command}`);
     this.httpClient.send(execution.command, execution);
+    return execution;
   }
 }
 
@@ -186,11 +200,12 @@ function buildProgram(container: ServiceContainer): Command {
 
   command
     .description('Analyze bundled CLI modules and staging progress.')
-    .argument('<command>', 'Command to execute')
+    .argument('<command>', 'Command to execute (analyze|categorize|summarize|legacy)')
+    .argument('[operand]', 'Optional operand for the selected command')
     .configureHelp(() => ({
       formatHelp: (cmd: Command) => {
         const lines = [
-          `Usage: ${cmd.name()} <command> [options]`,
+          `Usage: ${cmd.name()} <command> [operand] [options]`,
           '',
           cmd.description(),
           '',
@@ -198,6 +213,10 @@ function buildProgram(container: ServiceContainer): Command {
           '  -p, --profile <profile>  Analysis profile name',
           '  -u, --uppercase          Uppercase the resolved target',
           '  --target <value>         Target identifier override',
+          `  --bundle <path>          CLI bundle path (default: ${DEFAULT_BUNDLE_PATH})`,
+          `  --analysis <path>        Module analysis path (default: ${DEFAULT_CATEGORIZE_ANALYSIS_PATH})`,
+          '  -o, --output <path>      Output path override for analyze/categorize commands',
+          '  --print                  Print command result to stdout',
         ];
         return lines.join('\n');
       },
@@ -210,10 +229,20 @@ function buildProgram(container: ServiceContainer): Command {
     .argParser(() => true)
     .default(false);
   const targetOption = new Option('--target <value>', 'Target identifier override');
+  const bundleOption = new Option('--bundle <path>', 'CLI bundle path to analyze').default(DEFAULT_BUNDLE_PATH);
+  const analysisOption = new Option('--analysis <path>', 'Existing module analysis path').default(
+    DEFAULT_CATEGORIZE_ANALYSIS_PATH,
+  );
+  const outputOption = new Option('-o, --output <path>', 'Output path for generated files');
+  const printOption = new Option('--print', 'Print command result to stdout').argParser(() => true).default(false);
 
   command.addOption(profileOption);
   command.addOption(uppercaseOption);
   command.addOption(targetOption);
+  command.addOption(bundleOption);
+  command.addOption(analysisOption);
+  command.addOption(outputOption);
+  command.addOption(printOption);
 
   command.action((thisCommand) => {
     const runtime = container.get<RuntimeService>('runtime');
@@ -221,6 +250,10 @@ function buildProgram(container: ServiceContainer): Command {
       profile?: string;
       uppercase?: boolean;
       target?: string;
+      bundle?: string;
+      analysis?: string;
+      output?: string;
+      print?: boolean;
     }>();
 
     const processedArgs = thisCommand.processedArgs() as string[];
@@ -230,7 +263,54 @@ function buildProgram(container: ServiceContainer): Command {
     const profile = (options.profile ?? profileDefault) as string;
     const uppercaseDefault = (uppercaseOption.defaultValue ?? false) as boolean;
     const uppercase = Boolean(options.uppercase ?? uppercaseDefault);
-    const finalTarget = uppercase ? providedTarget.toUpperCase() : providedTarget;
+    let finalTarget = uppercase ? providedTarget.toUpperCase() : providedTarget;
+    let result: unknown;
+
+    if (!commandName) {
+      throw new Error('No command provided.');
+    }
+
+    if (commandName === 'analyze') {
+      const bundlePath = (operandTarget ?? options.bundle ?? DEFAULT_BUNDLE_PATH) as string;
+      const outputPath = (options.output ?? DEFAULT_ANALYSIS_OUTPUT_PATH) as string;
+      const analysisOptions: ModuleAnalysisOptions = {
+        bundlePath,
+        analysisOutputPath: outputPath,
+      };
+      const analysis = analyzeAndWrite(analysisOptions);
+      finalTarget = uppercase ? outputPath.toUpperCase() : outputPath;
+      result = analysis;
+      if (options.print) {
+        // eslint-disable-next-line no-console -- CLI output
+        console.log(`Analysis written to ${analysis.outputPath}`);
+      }
+    } else if (commandName === 'categorize') {
+      const analysisPath = (operandTarget ?? options.analysis ?? DEFAULT_CATEGORIZE_ANALYSIS_PATH) as string;
+      const outputPath = (options.output ?? DEFAULT_CATEGORY_OUTPUT_PATH) as string;
+      const output = categorizeModules({ analysisPath, outputPath });
+      finalTarget = uppercase ? outputPath.toUpperCase() : outputPath;
+      result = output;
+      if (options.print) {
+        // eslint-disable-next-line no-console -- CLI output
+        console.log(`Categorized ${output.categories.length} categories to ${outputPath}`);
+      }
+    } else if (commandName === 'summarize') {
+      const analysisPath = (operandTarget ?? options.analysis ?? DEFAULT_SUMMARY_ANALYSIS_PATH) as string;
+      const summary = summarizeModules({ analysisPath });
+      finalTarget = uppercase ? analysisPath.toUpperCase() : analysisPath;
+      result = summary;
+      if (options.print) {
+        // eslint-disable-next-line no-console -- CLI output
+        console.log(JSON.stringify(summary, null, 2));
+      }
+    } else if (commandName === 'legacy') {
+      finalTarget = uppercase ? DEFAULT_BUNDLE_PATH.toUpperCase() : DEFAULT_BUNDLE_PATH;
+      result = { legacyPath: DEFAULT_BUNDLE_PATH };
+      if (options.print) {
+        // eslint-disable-next-line no-console -- CLI output
+        console.log(DEFAULT_BUNDLE_PATH);
+      }
+    }
 
     runtime.record({
       command: commandName,
@@ -239,7 +319,12 @@ function buildProgram(container: ServiceContainer): Command {
         profile,
         uppercase,
         target: providedTarget,
+        bundle: options.bundle,
+        analysis: options.analysis,
+        output: options.output,
+        print: options.print,
       },
+      result,
     });
   });
 
