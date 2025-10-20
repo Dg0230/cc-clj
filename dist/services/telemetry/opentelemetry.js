@@ -1,11 +1,10 @@
 "use strict";
-/**
- * Placeholder for the OpenTelemetry service integration.
- *
- * Source bundle module IDs earmarked for migration:
- * mn, Dx0, kPB, LjB, SK1, YgB, ugB, fmB
- * gv0, ov0, Di1, yb0, nnB, BaB, VaB, JAQ
- * RAQ, nAQ, l2Q, t2Q, JBQ, ug0, mg0, pQQ
- * eQQ, I9Q
- */
-// TODO: Recreate telemetry wiring from cli-origin.js modules.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.api = exports.unregisterGlobal = exports.getGlobal = exports.registerGlobal = void 0;
+const global_1 = require("./internal/global");
+Object.defineProperty(exports, "registerGlobal", { enumerable: true, get: function () { return global_1.registerGlobal; } });
+Object.defineProperty(exports, "getGlobal", { enumerable: true, get: function () { return global_1.getGlobal; } });
+Object.defineProperty(exports, "unregisterGlobal", { enumerable: true, get: function () { return global_1.unregisterGlobal; } });
+const diag_1 = require("./internal/diag");
+const api_1 = require("./internal/api");
+exports.api = { diag: diag_1.diag, trace: api_1.trace, metrics: api_1.metrics, propagation: api_1.propagation, context: api_1.context };

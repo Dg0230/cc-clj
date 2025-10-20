@@ -1,7 +1,29 @@
 "use strict";
-/**
- * Placeholder for the React runtime bridge used by the CLI UI.
- *
- * Source bundle module IDs earmarked for migration: K1, P$A
- */
-// TODO: Port React runtime helpers from cli-origin.js bundle.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.jsxFragment = exports.jsxs = exports.jsx = exports.act = exports.startTransition = exports.forwardRef = exports.memo = exports.useContext = exports.useCallback = exports.useRef = exports.useReducer = exports.useMemo = exports.useEffect = exports.useState = exports.createContext = exports.cloneElement = exports.createElement = exports.Fragment = exports.Profiler = exports.Suspense = exports.StrictMode = exports.PureComponent = exports.Component = exports.Children = void 0;
+var runtime_1 = require("./runtime");
+Object.defineProperty(exports, "Children", { enumerable: true, get: function () { return runtime_1.Children; } });
+Object.defineProperty(exports, "Component", { enumerable: true, get: function () { return runtime_1.Component; } });
+Object.defineProperty(exports, "PureComponent", { enumerable: true, get: function () { return runtime_1.PureComponent; } });
+Object.defineProperty(exports, "StrictMode", { enumerable: true, get: function () { return runtime_1.StrictMode; } });
+Object.defineProperty(exports, "Suspense", { enumerable: true, get: function () { return runtime_1.Suspense; } });
+Object.defineProperty(exports, "Profiler", { enumerable: true, get: function () { return runtime_1.Profiler; } });
+Object.defineProperty(exports, "Fragment", { enumerable: true, get: function () { return runtime_1.Fragment; } });
+Object.defineProperty(exports, "createElement", { enumerable: true, get: function () { return runtime_1.createElement; } });
+Object.defineProperty(exports, "cloneElement", { enumerable: true, get: function () { return runtime_1.cloneElement; } });
+Object.defineProperty(exports, "createContext", { enumerable: true, get: function () { return runtime_1.createContext; } });
+Object.defineProperty(exports, "useState", { enumerable: true, get: function () { return runtime_1.useState; } });
+Object.defineProperty(exports, "useEffect", { enumerable: true, get: function () { return runtime_1.useEffect; } });
+Object.defineProperty(exports, "useMemo", { enumerable: true, get: function () { return runtime_1.useMemo; } });
+Object.defineProperty(exports, "useReducer", { enumerable: true, get: function () { return runtime_1.useReducer; } });
+Object.defineProperty(exports, "useRef", { enumerable: true, get: function () { return runtime_1.useRef; } });
+Object.defineProperty(exports, "useCallback", { enumerable: true, get: function () { return runtime_1.useCallback; } });
+Object.defineProperty(exports, "useContext", { enumerable: true, get: function () { return runtime_1.useContext; } });
+Object.defineProperty(exports, "memo", { enumerable: true, get: function () { return runtime_1.memo; } });
+Object.defineProperty(exports, "forwardRef", { enumerable: true, get: function () { return runtime_1.forwardRef; } });
+Object.defineProperty(exports, "startTransition", { enumerable: true, get: function () { return runtime_1.startTransition; } });
+Object.defineProperty(exports, "act", { enumerable: true, get: function () { return runtime_1.act; } });
+var jsx_runtime_1 = require("./jsx-runtime");
+Object.defineProperty(exports, "jsx", { enumerable: true, get: function () { return jsx_runtime_1.jsx; } });
+Object.defineProperty(exports, "jsxs", { enumerable: true, get: function () { return jsx_runtime_1.jsxs; } });
+Object.defineProperty(exports, "jsxFragment", { enumerable: true, get: function () { return jsx_runtime_1.Fragment; } });

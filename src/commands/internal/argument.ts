@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from './errors';
+import { InvalidArgumentError } from '../../shared/cli/errors';
 
 /**
  * Placeholder for the Commander `Argument` implementation (bundle module `He1`).
@@ -61,4 +61,14 @@ export class Argument<T = unknown> {
 
 export function argument<T = unknown>(name: string, description?: string): Argument<T> {
   return new Argument<T>(name, description);
+}
+
+export function humanReadableArgName(arg: Argument): string {
+  const name = arg.name();
+  if (name.startsWith('<') || name.startsWith('[')) {
+    return name;
+  }
+
+  const hasDefault = arg.defaultValue !== undefined;
+  return hasDefault ? `[${name}]` : `<${name}>`;
 }

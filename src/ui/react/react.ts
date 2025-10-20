@@ -1,7 +1,24 @@
-/**
- * Placeholder for the React runtime bridge used by the CLI UI.
- *
- * Source bundle module IDs earmarked for migration: K1, P$A
- */
-
-// TODO: Port React runtime helpers from cli-origin.js bundle.
+export {
+  Children,
+  Component,
+  PureComponent,
+  StrictMode,
+  Suspense,
+  Profiler,
+  Fragment,
+  createElement,
+  cloneElement,
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useCallback,
+  useContext,
+  memo,
+  forwardRef,
+  startTransition,
+  act,
+} from './runtime';
+export { jsx, jsxs, Fragment as jsxFragment } from './jsx-runtime';

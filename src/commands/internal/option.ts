@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from './errors';
+import { InvalidArgumentError } from '../../shared/cli/errors';
 
 /**
  * Placeholder for the Commander `Option` implementation (bundle module `vs0`).
@@ -88,5 +88,13 @@ export class Option<T = unknown> {
       throw new InvalidArgumentError(`Invalid option value '${value}'.`);
     }
     return parsed;
+  }
+}
+
+export class DualOptions {
+  constructor(public readonly positive: Option, public readonly negative: Option) {}
+
+  public all(): Option[] {
+    return [this.positive, this.negative];
   }
 }
