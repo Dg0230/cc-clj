@@ -1,0 +1,24 @@
+[
+  {
+    "name": "analyze-default",
+    "command": ["analyze"],
+    "inputs": [],
+    "outputs": [
+      { "flag": "--output", "baseline": "module-analysis.json" }
+    ],
+    "expectedStdout": "",
+    "expectedStderr": ""
+  },
+  {
+    "name": "categorize-default",
+    "command": ["categorize"],
+    "inputs": [
+      { "flag": "--analysis", "baseline": "module-analysis.json" }
+    ],
+    "outputs": [
+      { "flag": "--output", "baseline": "module-groups.json" }
+    ],
+    "expectedStdout": "",
+    "expectedStderr": ""
+  }
+]
