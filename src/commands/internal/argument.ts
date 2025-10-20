@@ -7,17 +7,39 @@ import { InvalidArgumentError } from '../../shared/cli/errors';
 export type ArgumentParser<T> = (value: string, previous?: T) => T;
 
 export class Argument<T = unknown> {
+  private readonly _rawName: string;
+  private readonly _required: boolean;
+  private readonly _variadic: boolean;
+
   private _description?: string;
   private _defaultValue?: T | (() => T);
   private _parser?: ArgumentParser<T>;
   private _choices?: Set<T>;
 
-  constructor(private readonly _name: string, description?: string) {
+  constructor(name: string, description?: string) {
+    this._rawName = name;
     this._description = description;
+    this._required = /^<.*>$/.test(name.trim());
+    this._variadic = /\.\.\.[>\]]?$/.test(name.trim());
   }
 
   public name(): string {
-    return this._name;
+    return this._rawName;
+  }
+
+  public isRequired(): boolean {
+    if (this._defaultValue !== undefined) {
+      return false;
+    }
+    return this._required;
+  }
+
+  public isOptional(): boolean {
+    return !this.isRequired();
+  }
+
+  public isVariadic(): boolean {
+    return this._variadic;
   }
 
   public description(description?: string): string | this {
