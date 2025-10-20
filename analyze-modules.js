@@ -93,13 +93,22 @@ function getLocation(node) {
 function analyzeFactory(factoryNode, moduleNames, exportsName, moduleName) {
   const dependencies = new Set();
   const exportStatements = [];
+  const stringLiterals = new Set();
+  const callIdentifiers = new Set();
   const targetNode = factoryNode.type === 'ArrowFunctionExpression' ? factoryNode.body : factoryNode.body;
 
-  traverseNode(targetNode, (node) => {
+  traverseNode(targetNode, (node, parent) => {
     if (node.type === 'CallExpression') {
       const callee = node.callee;
       if (callee && callee.type === 'Identifier' && moduleNames.has(callee.name) && callee.name !== exportsName && callee.name !== moduleName) {
         dependencies.add(callee.name);
+      }
+      if (callee) {
+        if (callee.type === 'Identifier') {
+          callIdentifiers.add(callee.name);
+        } else if (callee.type === 'MemberExpression' && !callee.computed && callee.property.type === 'Identifier') {
+          callIdentifiers.add(`${callee.object.type === 'Identifier' ? callee.object.name : snippetFromNode(callee.object)}.${callee.property.name}`);
+        }
       }
       const firstArg = node.arguments && node.arguments[0];
       if (firstArg && isExportsTarget(firstArg, exportsName, moduleName)) {
@@ -130,11 +139,23 @@ function analyzeFactory(factoryNode, moduleNames, exportsName, moduleName) {
         });
       }
     }
+    if (node.type === 'StringLiteral') {
+      if (node.value && node.value.length <= 200) {
+        stringLiterals.add(node.value);
+      }
+    } else if (node.type === 'TemplateElement') {
+      const value = node.value && node.value.cooked;
+      if (value && value.length <= 200) {
+        stringLiterals.add(value);
+      }
+    }
   }, factoryNode);
 
   return {
     dependencies: Array.from(dependencies).sort(),
-    exports: exportStatements
+    exports: exportStatements,
+    stringLiterals: Array.from(stringLiterals).slice(0, 25),
+    callIdentifiers: Array.from(callIdentifiers).slice(0, 25)
   };
 }
 
@@ -172,7 +193,9 @@ const results = moduleDeclarators.map((item) => {
       module: moduleName
     },
     dependencies: analysis.dependencies,
-    exports: analysis.exports
+    exports: analysis.exports,
+    stringLiterals: analysis.stringLiterals,
+    callIdentifiers: analysis.callIdentifiers
   };
 });
 
