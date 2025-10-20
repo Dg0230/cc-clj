@@ -9,7 +9,8 @@
     "build": "tsc",
     "prepare": "npm run build",
     "test": "jest",
-    "analyze": "node analyze-modules.js"
+    "analyze": "node analyze-modules.js",
+    "test:cli": "jest --runTestsByPath src/__tests__/cli/cliParity.test.ts"
   },
   "dependencies": {
     "@babel/generator": "^7.24.0",
