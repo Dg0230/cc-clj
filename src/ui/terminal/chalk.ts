@@ -1,7 +1,11 @@
-/**
- * Placeholder for the Chalk-based terminal styling helpers.
- *
- * Source bundle module IDs earmarked for migration: j2B, f2B
- */
+import { parseTemplate } from './internal/template';
+import { ChalkFactory, DEFAULT_THEME, toJson, fromJson } from './internal/factory';
 
-// TODO: Restore Chalk styling helpers from cli-origin.js bundle.
+/**
+ * Chalk facade aligning with bundle exports.
+ */
+// TODO: Ensure export surface matches cli-origin.js terminal styling modules.
+export { ChalkFactory as Chalk, DEFAULT_THEME, toJson, fromJson, parseTemplate };
+
+const chalk = new ChalkFactory();
+export default chalk;

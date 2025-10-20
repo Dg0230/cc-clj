@@ -1,7 +1,7 @@
 import { Argument } from './argument';
-import { CommanderError, InvalidArgumentError } from './errors';
+import { CommanderError, InvalidArgumentError } from '../../shared/cli/errors';
 import { Help } from './help';
-import { parseTokens, ParseOptionsResult } from './internals';
+import { parseTokens, ParseOptionsResult } from './parser';
 import { Option } from './option';
 
 /**
