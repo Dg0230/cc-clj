@@ -14,12 +14,14 @@ class Option {
         this._variadic = false;
         this.flags = flags;
         this.description = description;
-        const [shortFlag, longFlag] = splitFlags(flags);
-        if ((shortFlag === null || shortFlag === void 0 ? void 0 : shortFlag.startsWith('-')) && !shortFlag.startsWith('--')) {
-            this.short = shortFlag;
-        }
-        if (longFlag === null || longFlag === void 0 ? void 0 : longFlag.startsWith('--')) {
-            this.long = longFlag;
+        const flagParts = splitFlags(flags);
+        for (const part of flagParts) {
+            if (part.startsWith('--')) {
+                this.long = part;
+            }
+            else if (part.startsWith('-')) {
+                this.short = part;
+            }
         }
         if (flags.includes('...')) {
             this._variadic = true;

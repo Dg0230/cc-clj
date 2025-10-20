@@ -3,13 +3,18 @@
  */
 export type ArgumentParser<T> = (value: string, previous?: T) => T;
 export declare class Argument<T = unknown> {
-    private readonly _name;
+    private readonly _rawName;
+    private readonly _required;
+    private readonly _variadic;
     private _description?;
     private _defaultValue?;
     private _parser?;
     private _choices?;
-    constructor(_name: string, description?: string);
+    constructor(name: string, description?: string);
     name(): string;
+    isRequired(): boolean;
+    isOptional(): boolean;
+    isVariadic(): boolean;
     description(description?: string): string | this;
     default(value: T | (() => T)): this;
     argParser(parser: ArgumentParser<T>): this;

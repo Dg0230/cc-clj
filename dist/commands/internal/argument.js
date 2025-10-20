@@ -5,12 +5,26 @@ exports.argument = argument;
 exports.humanReadableArgName = humanReadableArgName;
 const errors_1 = require("../../shared/cli/errors");
 class Argument {
-    constructor(_name, description) {
-        this._name = _name;
+    constructor(name, description) {
+        this._rawName = name;
         this._description = description;
+        this._required = /^<.*>$/.test(name.trim());
+        this._variadic = /\.\.\.[>\]]?$/.test(name.trim());
     }
     name() {
-        return this._name;
+        return this._rawName;
+    }
+    isRequired() {
+        if (this._defaultValue !== undefined) {
+            return false;
+        }
+        return this._required;
+    }
+    isOptional() {
+        return !this.isRequired();
+    }
+    isVariadic() {
+        return this._variadic;
     }
     description(description) {
         var _a;

@@ -149,12 +149,29 @@ class Command {
         const tokens = this.prepareTokens(argv, settings.from);
         const result = this.applyOptions(tokens);
         this._passedOptionValues = result.optionValues;
-        this._processedOperands = result.operands;
-        if (this.arguments.length > result.operands.length) {
-            const missing = this.arguments.slice(result.operands.length);
-            const missingNames = missing.map((arg) => arg.name()).join(', ');
+        const operands = [...result.operands];
+        const missingRequired = [];
+        for (let index = 0; index < this.arguments.length; index += 1) {
+            const argument = this.arguments[index];
+            const value = operands[index];
+            if (value === undefined) {
+                if (argument.defaultValue !== undefined) {
+                    operands[index] = argument.defaultValue;
+                }
+                else if (argument.isRequired()) {
+                    missingRequired.push(argument);
+                }
+                continue;
+            }
+            if (typeof value === 'string') {
+                operands[index] = argument.parse(value);
+            }
+        }
+        if (missingRequired.length > 0) {
+            const missingNames = missingRequired.map((arg) => arg.name()).join(', ');
             throw new errors_1.InvalidArgumentError(`Missing required arguments: ${missingNames}`);
         }
+        this._processedOperands = operands;
         if (!this._allowUnknown && result.unknown.length > 0) {
             throw new errors_1.CommanderError('commander.unknownOption', 1, `Unknown options: ${result.unknown.join(', ')}`);
         }
