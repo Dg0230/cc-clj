@@ -1,12 +1,14 @@
 "use strict";
-/**
- * Placeholder for the AJV/JSON schema validation utilities.
- *
- * Source bundle module IDs earmarked for migration:
- * rt, dG1, Ie2, qM0, RQB, dQB, iQB, aQB
- * rQB, Q9B, G9B, I9B, wM0, NM0, LM0, MM0
- * H9B, C9B, $9B, E9B, R9B, P9B, b9B, g9B
- * m9B, RM0, l9B, i9B, n9B, jM0, nT0, RJB
- * uJB, MCB, Sv0, Tn1, r4Q
- */
-// TODO: Rebuild validation helpers from cli-origin.js bundle.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.keywords = exports.formats = exports.validateSchema = exports.compileSchema = exports.createAjvInstance = exports.isValidUTF8 = exports.isValidStatusCode = exports.isBlob = void 0;
+var http_1 = require("./internal/http");
+Object.defineProperty(exports, "isBlob", { enumerable: true, get: function () { return http_1.isBlob; } });
+Object.defineProperty(exports, "isValidStatusCode", { enumerable: true, get: function () { return http_1.isValidStatusCode; } });
+Object.defineProperty(exports, "isValidUTF8", { enumerable: true, get: function () { return http_1.isValidUTF8; } });
+var core_1 = require("./internal/core");
+Object.defineProperty(exports, "createAjvInstance", { enumerable: true, get: function () { return core_1.createAjvInstance; } });
+Object.defineProperty(exports, "compileSchema", { enumerable: true, get: function () { return core_1.compileSchema; } });
+Object.defineProperty(exports, "validateSchema", { enumerable: true, get: function () { return core_1.validateSchema; } });
+var keywords_1 = require("./internal/keywords");
+Object.defineProperty(exports, "formats", { enumerable: true, get: function () { return keywords_1.formats; } });
+Object.defineProperty(exports, "keywords", { enumerable: true, get: function () { return keywords_1.keywords; } });

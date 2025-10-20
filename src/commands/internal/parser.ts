@@ -1,4 +1,4 @@
-import { CommanderError } from './errors';
+import { CommanderError } from '../../shared/cli/errors';
 import { Option } from './option';
 
 /**

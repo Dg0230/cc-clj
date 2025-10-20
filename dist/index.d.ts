@@ -7,6 +7,7 @@ export interface ExecutionRecord {
         profile: string;
         uppercase: boolean;
     } & Record<string, unknown>;
+    result?: unknown;
 }
 export interface AppConfiguration {
     readonly defaultProfile: string;
@@ -42,7 +43,7 @@ export declare class RuntimeService {
     private readonly httpClient;
     readonly executions: ExecutionRecord[];
     constructor(telemetry: TelemetryService, httpClient: HttpClientService);
-    record(execution: ExecutionRecord): void;
+    record(execution: ExecutionRecord): ExecutionRecord;
 }
 type ServiceFactory<T> = (container: ServiceContainer) => T | Promise<T>;
 interface ServiceDefinition<T = unknown> {

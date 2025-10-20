@@ -14,7 +14,7 @@ export function traverseAst(root: Node | null | undefined, enter: TraversalCallb
       continue;
     }
 
-    const value = (root as Record<string, unknown>)[key];
+    const value = Reflect.get(root as Node, key) as unknown;
     if (!value) {
       continue;
     }

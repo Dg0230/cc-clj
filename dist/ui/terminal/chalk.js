@@ -1,7 +1,12 @@
 "use strict";
-/**
- * Placeholder for the Chalk-based terminal styling helpers.
- *
- * Source bundle module IDs earmarked for migration: j2B, f2B
- */
-// TODO: Restore Chalk styling helpers from cli-origin.js bundle.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.parseTemplate = exports.fromJson = exports.toJson = exports.DEFAULT_THEME = exports.Chalk = void 0;
+const template_1 = require("./internal/template");
+Object.defineProperty(exports, "parseTemplate", { enumerable: true, get: function () { return template_1.parseTemplate; } });
+const factory_1 = require("./internal/factory");
+Object.defineProperty(exports, "Chalk", { enumerable: true, get: function () { return factory_1.ChalkFactory; } });
+Object.defineProperty(exports, "DEFAULT_THEME", { enumerable: true, get: function () { return factory_1.DEFAULT_THEME; } });
+Object.defineProperty(exports, "toJson", { enumerable: true, get: function () { return factory_1.toJson; } });
+Object.defineProperty(exports, "fromJson", { enumerable: true, get: function () { return factory_1.fromJson; } });
+const chalk = new factory_1.ChalkFactory();
+exports.default = chalk;
